@@ -5,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Niemi Isolering – Cenrādis</title>
   <meta name="description" content="Cenas standarta kanāliem un komponentiem. Speciālie izmēri pēc vienošanās – ātra kalkulācija un piegāde." />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
   <!-- Header -->
   <header class="site-header">
     <div class="container topbar">
       <div class="brand">NIEMI ISOLERING</div>
-     <nav aria-label="Galvenā izvēlne">
-  <a href="/index.html">Sākums</a>
-  <a href="/produkti.html">Produkti</a>
-  <a href="/cenradis.html">Cenrādis</a>
-  <a href="/kontakti.html">Kontakti</a>
-</nav>
-
+      <!-- Absoluuttiset linkit juureen => ei enää 404:ää alikansioista -->
+      <nav aria-label="Galvenā izvēlne">
+        <a href="/index.html">Sākums</a>
+        <a href="/produkti.html">Produkti</a>
+        <a href="/cenradis.html" aria-current="page">Cenrādis</a>
+        <a href="/kontakti.html">Kontakti</a>
+      </nav>
     </div>
   </header>
 
@@ -30,10 +31,10 @@
     </p>
 
     <div class="cta-row" style="margin:.5rem 0 1rem">
-      <!-- Vaihda linkki: pdf-viewer.html TAI suoraan omaan PDF:ään esim. ./pdf/Cenradis_NO.pdf -->
-      <a class="btn" href="./pdf-viewer.html">Atvērt PDF (cenrādis/katalogs)</a>
-      <!-- Esimerkkilataus, jos sinulla on yksi koonti-PDF -->
-      <!-- <a class="btn btn-outline" href="./pdf/Niemi_Isolering_Cenradis_LV.pdf" download>Lejupielādēt PDF</a> -->
+      <!-- Vie katselimeen (latviski/), joka näyttää listan ja avaa ensimmäisen PDF:n -->
+      <a class="btn" href="/latviski/pdf-viewer.html">Atvērt PDF (cenrādis/katalogs)</a>
+      <!-- Vai suoraan ensipdf (jos haluat varman “aukeaa heti” -toiminnan) -->
+      <a class="btn btn-outline" href="/latviski/pdf-viewer.html?file=/lvpdf/1.lv.pdf">Atvērt pirmo PDF</a>
     </div>
 
     <!-- Kortit – hintaryhmät -->
