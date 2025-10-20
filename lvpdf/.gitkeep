@@ -1,0 +1,27 @@
+<!-- Vaihda vain tämä BASE jos kansiopolku muuttuu -->
+<script>
+  const BASE = '../lvpdf/';
+</script>
+
+<aside class="list" id="pdf-list" aria-label="Dokumentu saraksts">
+  <a data-file="LV_01_Titullapa.pdf" data-title="Titullapa" class="active">Titullapa</a>
+
+  <!-- LV_02 puuttuu – jätetään kommentiksi, lisää kun sinulla on se -->
+  <!-- <a data-file="LV_02_BKT_Kanals.pdf" data-title="BKT kanāls">BKT kanāls</a> -->
+
+  <a data-file="LV_03_BKT_Likums_90.pdf" data-title="BKT līkums 90°">BKT līkums 90°</a>
+  <a data-file="LV_04_BKT_Pareja.pdf" data-title="BKT pāreja">BKT pāreja</a>
+  <a data-file="LV_05_BKT_Rect_to_Round.pdf" data-title="Pāreja: taisnstūris → apaļš">Pāreja: taisnstūris → apaļš</a>
+  <a data-file="LV_06_BKT_Rect_to_Rect.pdf" data-title="Pāreja: taisnstūris → taisnstūris">Pāreja: taisnstūris → taisnstūris</a>
+  <a data-file="LV_07_BKT_Bottom_Radius.pdf" data-title="Pāreja ar apakšējo rādiusu">Pāreja ar apakšējo rādiusu</a>
+  <a data-file="LV_08_Vaks_ar_Piesleguma_Profilu.pdf" data-title="Vāks ar pieslēguma profilu">Vāks ar pieslēguma profilu</a>
+  <a data-file="LV_09_Lietus_Vacins_ar_Sietu.pdf" data-title="Lietus vāciņš ar sietu">Lietus vāciņš ar sietu</a>
+  <a data-file="LV_10_Laikapstakliem_Isturigs_Rezgis.pdf" data-title="Laikapstākļiem izturīgs režģis">Laikapstākļiem izturīgs režģis</a>
+  <a data-file="LV_11_Jumta_Adapters.pdf" data-title="Jumta adapters">Jumta adapters</a>
+  <a data-file="LV_12_Sienas_Rezgis.pdf" data-title="Sienas režģis">Sienas režģis</a>
+  <a data-file="LV_13_Sienas_Kanala_Ramis.pdf" data-title="Sienas kanāla rāmis">Sienas kanāla rāmis</a>
+  <a data-file="LV_14_Lietus_Apkakle.pdf" data-title="Lietus apkakle">Lietus apkakle</a>
+
+  <!-- LV_15 puuttuu – lisää kun valmis -->
+  <!-- <a data-file="LV_15_Iekartas.pdf" data-title="Iekārtas">Iekārtas</a> -->
+</aside>
