@@ -1,135 +1,93 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="lv">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Niemi Isolering – Ventilācija & Metāls</title>
-  <meta name="description" content="Augstas kvalitātes ventilācijas sistēmas un metāla izstrādājumi – godīgas cenas un ātra piegāde." />
-
-  <!-- Fonts (vapaaehtoinen) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Tyyli tästä reposta -->
-  <link rel="stylesheet" href="./style.css" />
-
-  <style>
-    /* Kevyt varmistus; päätyylit tulevat style.css:stä */
-    *,*::before,*::after { box-sizing: border-box; }
-    html,body { margin:0; padding:0; }
-    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.6; color:#1a202c; background: linear-gradient(180deg, #c9d8e6 0%, #eef4f9 100%); }
-    a { color:#2f855a; text-decoration:none } a:hover{ text-decoration:underline }
-    img { max-width:100%; height:auto }
-    .container { width:min(1100px, 92vw); margin-inline:auto }
-    header.site-header { padding:1.25rem 0 .5rem }
-    .topbar { display:flex; align-items:center; justify-content:space-between; gap:1rem }
-    .brand { font-weight:800; letter-spacing:.03em }
-    nav.menu { display:flex; gap:1rem; flex-wrap:wrap }
-    nav.menu a { padding:.5rem .85rem; border-radius:999px; font-weight:600; color:#1a202c }
-    nav.menu a.active, nav.menu a:hover { background:#e0e8f0; text-decoration:none }
-    .hero { padding:clamp(2rem, 5vw, 3rem) 0 1.25rem }
-    .hero h1 { margin:0 0 .75rem; font-size:clamp(2rem, 4.5vw, 3rem); line-height:1.15; font-weight:800 }
-    .lead { margin:0 0 1.25rem; color:#2d3748 }
-    .cta-row { display:flex; gap:.75rem; flex-wrap:wrap }
-    .section { padding:1.25rem 0 .5rem }
-    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem }
-    @media (max-width:900px){ .grid-3{ grid-template-columns:1fr } }
-    .card { background:#fff; border:1px solid #e5efe9; border-radius:1rem; padding:1.25rem; box-shadow:0 10px 28px rgba(9,33,23,.08) }
-    .imgwrap { text-align:center; margin-top:1rem }
-    .pretty { max-width:90%; border-radius:1rem; box-shadow:0 6px 18px rgba(0,0,0,.15) }
-    .imgcap { color:#4b6a5d; font-style:italic; margin-top:.5rem }
-    .cta-banner { margin:1.5rem auto 0; padding:1rem 1.25rem; background:#f0f8ff; border:1px solid #c7d8eb; border-radius:1rem; box-shadow:0 8px 20px rgba(0,0,0,.06) }
-    .divider { height:1px; background:#cbd5e0; margin:.75rem 0 1rem }
-    .footer-grid { display:grid; gap:.75rem; grid-template-columns: repeat(2, 1fr) }
-    @media (max-width:700px){ .footer-grid { grid-template-columns:1fr } }
-    .small { font-size:.95rem; color:#2d3748 }
-    .btn, .btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.8rem 1.1rem; border-radius:.9rem; font-weight:700; border:2px solid transparent; cursor:pointer; text-decoration:none; }
-    .btn { background:#2f855a; color:#fff; box-shadow:0 6px 20px rgba(47,133,90,.18) }
-    .btn-outline { color:#2f855a; border-color:#2f855a; background:transparent }
-    .btn:hover { filter:brightness(0.98) }
-    .btn-outline:hover { background:#e7f3ec }
-  </style>
+  <meta name="description" content="Kvalitatīvas ventilācijas sistēmas un metāla izstrādājumi Latvijai – saprātīgas cenas un ātra piegāde." />
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
-
 <body>
-  <!-- Header & Navigācija -->
+  <!-- Header -->
   <header class="site-header">
     <div class="container topbar">
-      <div clas<nav aria-label="Galvenā izvēlne">
-  <a href="/index.html">Sākums</a>
-  <a href="/produkti.html">Produkti</a>
-  <a href="/cenradis.html">Cenrādis</a>
-  <a href="/kontakti.html">Kontakti</a>
-</nav>
-s="brand">NIEMI ISOLERING</div>
-     
+      <div class="brand">NIEMI ISOLERING</div>
+      <nav aria-label="Galvenā izvēlne">
+        <a href="/index.html" aria-current="page">Sākums</a>
+        <a href="/produkti.html">Produkti</a>
+        <a href="/cenradis.html">Cenrādis</a>
+        <a href="/kontakti.html">Kontakti</a>
+      </nav>
     </div>
 
     <!-- Hero -->
     <section class="hero container">
-      <h1>Ventilācijas sistēmas un metāla izstrādājumi augstā kvalitātē</h1>
-      <p class="lead">Precizitāte ikvienā griezumā – kvalitāte katrā detaļā. Godīgas cenas un ātra piegāde.</p>
+      <h1>Ventilācijas sistēmas & metāla izstrādājumi</h1>
+      <p class="lead">Precizitāte katrā griezumā – kvalitāte katrā detaļā. Draudzīgas cenas un ātra piegāde.</p>
       <div class="cta-row">
-        <a class="btn" href="./produkti.html">Skatīt produktus</a>
-        <a class="btn-outline" href="./kontakti.html">Pieprasīt piedāvājumu</a>
+        <a class="btn" href="/latviski/pdf-viewer.html">Skatīt produktu PDF</a>
+        <a class="btn-outline" href="/latviski/pdf-viewer.html?file=/lvpdf/1.lv.pdf">Atvērt pirmo PDF</a>
       </div>
     </section>
   </header>
 
   <!-- Attēli -->
   <section class="container imgwrap">
-    <img loading="lazy" class="pretty" src="./assets/julkaisuun.png" alt="Kanāls – standarta un speciālie izmēri" />
+    <img loading="lazy" class="pretty" src="/assets/julkaisuun.png" alt="Taisnstūra kanāli – standarta un speciālie izmēri">
     <p class="imgcap">Standarta kanāli un speciālie izmēri pēc vienošanās</p>
   </section>
 
   <section class="container imgwrap">
-    <img loading="lazy" class="pretty" src="./assets/julkaisu.png" alt="Izolācijas apšuvums – precīzs izpildījums" />
-    <p class="imgcap">Izolācijas apšuvums ar precizitāti un pieredzi</p>
+    <img loading="lazy" class="pretty" src="/assets/julkaisu.png" alt="Izolācijas apdare – precīza un estētiska izgatavošana">
+    <p class="imgcap">Izolācijas apdare ar pieredzi un precizitāti</p>
   </section>
 
-  <!-- Cenrāža poga -->
-  <section id="cenradis" class="section container">
-    <a class="btn" href="./cenradis.html">Cenrādis – izolācijas apšuvums (PDF)</a>
-    <span class="muted" style="margin-left:.75rem;">Atveras lapā</span>
+  <!-- Ātrās saites -->
+  <section class="container section">
+    <div class="cta-row">
+      <a class="btn" href="/produkti.html">Produkti</a>
+      <a class="btn btn-outline" href="/cenradis.html">Cenrādis</a>
+      <a class="btn btn-outline" href="/kontakti.html">Kontakti</a>
+    </div>
   </section>
 
   <main>
-    <!-- Īpašības -->
+    <!-- Īsie ieguvumi -->
     <section class="container grid-3" style="margin-top:.75rem;">
       <article class="card">
         <h3>Kvalitāte</h3>
-        <p>Komponenti un kanāli pēc standarta izmēriem – ar iespēju izgatavot speciālus risinājumus pēc vienošanās.</p>
+        <p>Komponenti un kanāli pēc standarta izmēriem, ar iespēju izgatavot speciālos risinājumus pēc pieprasījuma.</p>
       </article>
       <article class="card">
         <h3>Piegāde</h3>
-        <p>Piegāde ar skaidru PDF dokumentāciju – ērti plānot un montēt.</p>
+        <p>Skaidra PDF dokumentācija pie piegādes – ērti plānošanai un montāžai.</p>
       </article>
       <article class="card">
         <h3>Sadarbība</h3>
-        <p>Tieša saziņa ar ražotāju. Atrodam risinājumu jūsu uzdevumam – gan lielam, gan mazam.</p>
+        <p>Tieša saziņa ar ražotāju. Atrodam risinājumu jūsu uzdevumam – gan lieliem, gan maziem projektiem.</p>
       </article>
     </section>
 
-    <!-- Piedāvājuma CTA -->
+    <!-- CTA -->
     <section class="container cta-banner">
-      <p><strong>Nepieciešams piedāvājums?</strong></p>
-      <p>Sūtiet mums <strong>zīmējumus vai izmērus</strong> vajadzīgajām detaļām – ātri aprēķināsim <strong>materiālu cenu</strong> un piegādi.</p>
-      <p class="muted">E-pasts: <a href="mailto:isolerigniemi@gmail.com">isolerigniemi@gmail.com</a> • WhatsApp: <a href="https://wa.me/358402434364" target="_blank" rel="noopener">+358 40 243 4364</a></p>
+      <p><strong>Vajadzīgs piedāvājums?</strong></p>
+      <p>Sūtiet mums <strong>zīmējumus vai izmērus</strong> – ātri aprēķināsim <strong>materiālu cenu</strong> un piegādi.</p>
+      <p class="muted">
+        E-pasts: <a href="mailto:isolerigniemi@gmail.com">isolerigniemi@gmail.com</a> ·
+        WhatsApp: <a href="https://wa.me/358402434364" target="_blank" rel="noopener">+358 40 243 4364</a>
+      </p>
     </section>
   </main>
 
-  <!-- Kājene -->
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="divider"></div>
       <div class="footer-grid">
+        <div class="small"><strong>Niemi Isolering</strong><br/>Ventilācija & Metāls</div>
         <div class="small">
-          <strong>Niemi Isolering</strong><br />
-          Ventilācija & Metāls
-        </div>
-        <div class="small">
-          E-pasts: <a href="mailto:isolerigniemi@gmail.com">isolerigniemi@gmail.com</a><br />
+          E-pasts: <a href="mailto:isolerigniemi@gmail.com">isolerigniemi@gmail.com</a><br/>
           WhatsApp: <a href="https://wa.me/358402434364" target="_blank" rel="noopener">+358 40 243 4364</a>
         </div>
       </div>
