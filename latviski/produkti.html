@@ -4,32 +4,40 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Niemi Isolering – Produkti</title>
-  <meta name="description" content="Latvijas ventilācijas sistēmas un pielāgoti izstrādājumi no metāla. Skatiet tehniskos PDF dokumentus." />
+  <meta name="description" content="Ventilācijas sistēmas un metāla izstrādājumi Latvijai. Skatiet tehniskos PDF failus ar izmēriem un materiāliem." />
   <link rel="icon" href="./assets/favicon.ico" />
   <link rel="stylesheet" href="./style.css" />
   <style>
-    .container{max-width:1100px;margin:0 auto;padding:1rem}
-    header,footer{border-bottom:1px solid #eee}
-    footer{border-bottom:none;border-top:1px solid #eee;margin-top:2rem}
-    .logo{text-decoration:none;font-weight:700}
-    .nav a{margin-right:12px}
-    .grid{display:grid;gap:1rem}
-    @media(min-width:700px){.grid.cols-2{grid-template-columns:1fr 1fr}}
-    .card{border:1px solid #ddd;border-radius:14px;padding:1rem;background:#fff}
-    .card h3{margin-top:0}
-    .btn{display:inline-block;padding:.5rem 1rem;margin-top:.5rem;background:#f5f5f5;border-radius:8px;text-decoration:none;border:1px solid #ccc}
-    .btn:hover{background:#eee}
+    :root{--max:1100px}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#0f172a;margin:0}
+    a{color:#0e7c4f;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:clamp(16px,2vw,24px)}
+    header,footer{border-bottom:1px solid rgba(0,0,0,.08)}
+    footer{border-bottom:none;border-top:1px solid rgba(0,0,0,.08);margin-top:24px}
+    .logo{font-weight:800;letter-spacing:.3px}
+    nav a{margin-right:14px;padding:6px 8px;border-radius:8px}
+    nav a[aria-current="page"]{background:rgba(0,0,0,.06);text-decoration:none}
+    h1{margin:6px 0 8px}
+    .muted{color:#466262}
+    .grid{display:grid;gap:14px}
+    @media(min-width:720px){.grid.cols-2{grid-template-columns:1fr 1fr}}
+    .card{border:1px solid rgba(0,0,0,.08);border-radius:14px;background:#fff;padding:16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
+    .card h3{margin:0 0 6px}
+    .btn{display:inline-block;background:#2fbf71;color:#06351f;font-weight:700;padding:9px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.08)}
+    .btn:hover{filter:brightness(1.05);text-decoration:none}
+    .note{margin-top:8px;padding:10px;border-radius:10px;border:1px dashed rgba(0,0,0,.2);background:#f7faf9;color:#29443f}
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <a class="logo" href="./index.html" aria-label="Niemi Isolering">Niemi Isolering</a>
-      <nav class="nav" aria-label="Galvenā izvēlne">
+      <div class="logo">NIEMI ISOLERING</div>
+      <nav aria-label="Galvenā izvēlne">
         <a href="./index.html">Sākums</a>
         <a href="./produkti.html" aria-current="page">Produkti</a>
         <a href="./hinnasto.html">Cenas</a>
-        <a href="./kontakt.html">Kontakti</a>
+        <a href="./kontakti.html">Kontakti</a>
       </nav>
     </div>
   </header>
@@ -37,81 +45,86 @@
   <main>
     <div class="container">
       <h1>Produkti un tehniskie dati</h1>
-      <p class="muted">Izvēlieties produktu, lai skatītu PDF dokumentu ar izmēriem un materiāliem.</p>
+      <p class="muted">Izvēlieties produktu – tiks atvērts skatītājs ar PDF failu (lapas ietvaros).</p>
 
       <div class="grid cols-2">
 
-        <div class="card">
+        <article class="card">
           <h3>1. BKT Kanāls</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/1.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/1.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>2. BKT Līkums 90°</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/2.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/2.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>3. BKT Pāreja</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/3.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/3.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>4. Pāreja: taisnstūris → apaļš</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/4.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/4.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>5. Pāreja: taisnstūris → taisnstūris</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/5.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/5.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>6. Pāreja ar apakšējo rādiusu</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/6.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/6.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>7. Vāks ar pieslēguma profilu</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/7.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/7.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>8. Lietus vāciņš ar sietu</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/8.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/8.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>9. Laikapstākļiem izturīgs režģis</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/9.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/9.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>10. Jumta adapters</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/10.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/10.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>11. Sienas režģis</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/11.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/11.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>12. Sienas kanāla rāmis</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/12.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/12.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>13. Lietus apkakle</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/13.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/13.lv.pdf">Skatīt PDF</a>
+        </article>
 
-        <div class="card">
-          <h3>14. Iekārtas un citi elementi</h3>
-          <a class="btn" href="pdf-viewer.html?file=lvpdf/14.lv.pdf" target="_blank">Skatīt PDF</a>
-        </div>
+        <article class="card">
+          <h3>14. Iekārtas / citi elementi</h3>
+          <a class="btn" href="./latviski/pdf-viewer.html?file=/lvpdf/14.lv.pdf">Skatīt PDF</a>
+        </article>
 
       </div>
+
+      <p class="note">
+        Ja PDF neielādējas skatītājā, atveriet to tieši: <code>/lvpdf/&lt;numurs&gt;.lv.pdf</code>.
+        Piemēram: <a href="/lvpdf/1.lv.pdf">/lvpdf/1.lv.pdf</a>
+      </p>
     </div>
   </main>
 
