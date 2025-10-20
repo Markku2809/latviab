@@ -84,62 +84,100 @@
       </div>
     </div>
   </footer>
+<script>
+  (function(){
+    // ✅ OIKEA polku: viewer on latviski/-kansiossa ja PDF:t latviski/lvpdf/
+    const BASE = './lvpdf/';
 
-  <script>
-    (function(){
-      const list = document.getElementById('pdf-list');
-      const frame = document.getElementById('frame');
-      const dl = document.getElementById('download');
-      const open = document.getElementById('open-new');
-      const prevBtn = document.getElementById('prev');
-      const nextBtn = document.getElementById('next');
-      const hint = document.getElementById('load-hint');
-      const openFallback = document.getElementById('open-fallback');
+    const list = document.getElementById('pdf-list');
+    const frame = document.getElementById('frame');
+    const dl = document.getElementById('download');
+    const open = document.getElementById('open-new');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const hint = document.getElementById('load-hint');
+    const openFallback = document.getElementById('open-fallback');
 
-      const links = Array.from(list.querySelectorAll('a'));
+    const links = list ? Array.from(list.querySelectorAll('a')) : [];
 
-      function openPdf(a){
-        if(!a) return;
-        links.forEach(x => x.classList.remove('active'));
-        a.classList.add('active');
-        const url = a.getAttribute('href');
-        const title = a.dataset.title || 'PDF';
-        frame.src = url;
-        frame.title = title;
-        dl.href = url;
-        open.href = url;
-        openFallback.href = url;
-        hint.hidden = true;
+    // Normalisoi URL param: sallitaan "1.lv.pdf", "lvpdf/1.lv.pdf", "/latviski/lvpdf/1.lv.pdf" tai koko URL
+    function normalizeUrl(fileParam){
+      if (!fileParam) return null;
+      // jos koko http(s) url
+      if (/^https?:\/\//i.test(fileParam)) return fileParam;
+      // jos alkaa / tai ./ tai ../ -> käytä sellaisenaan
+      if (/^(\/|\.{1,2}\/)/.test(fileParam)) return fileParam;
+      // jos alkaa lvpdf/ -> poista etuliite ja liitä BASE
+      fileParam = fileParam.replace(/^lvpdf[\/\\]/i,'');
+      return BASE + fileParam;
+    }
+
+    function openPdfByUrl(url, title){
+      frame.src = url;
+      frame.title = title || 'PDF';
+      dl.href = url;
+      open.href = url;
+      openFallback.href = url;
+      hint.hidden = true;
+    }
+
+    function openPdfLink(a){
+      links.forEach(x => x.classList.remove('active'));
+      a.classList.add('active');
+      const file = a.dataset.file || a.getAttribute('href');
+      const title = a.dataset.title || a.textContent.trim() || 'PDF';
+      const url = normalizeUrl(file) || BASE + file;
+      openPdfByUrl(url, title);
+    }
+
+    // Jos tuotteista tultiin linkillä ?file=...
+    const params = new URLSearchParams(location.search);
+    const fileParam = params.get('file');
+    if (fileParam) {
+      const want = fileParam.split('/').pop(); // esim. "1.lv.pdf"
+      // Yritä myös aktivoida listassa vastaava rivi
+      const match = links.find(a => {
+        const f = (a.dataset.file || a.getAttribute('href') || '').split('/').pop();
+        return f.toLowerCase() === want.toLowerCase();
+      });
+      const url = normalizeUrl(fileParam);
+      if (match) {
+        openPdfLink(match);
+      } else if (url) {
+        // ei listassa, lataa silti
+        openPdfByUrl(url, 'PDF');
       }
+    } else if (links.length) {
+      // Ei parametriä → avaa listan eka
+      openPdfLink(links[0]);
+    }
 
-      // Kliks no saraksta
-      list.addEventListener('click', function(e){
-        const a = e.target.closest('a'); if(!a) return;
-        e.preventDefault();
-        openPdf(a);
-      });
+    // Klikit vasemmalta listalta
+    list && list.addEventListener('click', function(e){
+      const a = e.target.closest('a'); if (!a) return;
+      e.preventDefault();
+      openPdfLink(a);
+    });
 
-      // Iepriekšējais / Nākamais
-      function currentIndex(){ return links.findIndex(x => x.classList.contains('active')); }
-      prevBtn.addEventListener('click', () => {
-        const i = currentIndex();
-        if(i > 0) openPdf(links[i-1]);
-      });
-      nextBtn.addEventListener('click', () => {
-        const i = currentIndex();
-        if(i < links.length - 1) openPdf(links[i+1]);
-      });
+    // Edellinen / Seuraava
+    function currentIndex(){ return links.findIndex(x => x.classList.contains('active')); }
+    prevBtn && prevBtn.addEventListener('click', () => {
+      const i = currentIndex();
+      if (i > 0) openPdfLink(links[i-1]);
+    });
+    nextBtn && nextBtn.addEventListener('click', () => {
+      const i = currentIndex();
+      if (i < links.length - 1) openPdfLink(links[i+1]);
+    });
 
-      // Ja iframe neielādējas (404 u.c.), parādām norādi atvērt jaunā cilnē
-      frame.addEventListener('error', () => { hint.hidden = false; });
-      // Safari/dažos gadījumos onerror nestrādā ar <iframe>, tāpēc pievienojam laika rezervi:
-      let failTimer;
-      frame.addEventListener('load', () => {
-        clearTimeout(failTimer);
-        hint.hidden = true;
-      });
-      failTimer = setTimeout(() => { hint.hidden = false; }, 2000);
-    })();
-  </script>
+    // Fallback vihje jos iframe ei lataudu
+    frame.addEventListener('error', () => { hint.hidden = false; });
+    let failTimer;
+    frame.addEventListener('load', () => { clearTimeout(failTimer); hint.hidden = true; });
+    failTimer = setTimeout(() => { hint.hidden = false; }, 2000);
+  })();
+</script>
+
+
 </body>
 </html>
