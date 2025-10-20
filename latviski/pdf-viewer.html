@@ -50,21 +50,22 @@
 
       <div class="shell">
         <!-- KREISĀ KOLOŅA: SARAKSTS -->
-     
-  <a href="#" data-file="3.lv.pdf"  data-title="Kanāli">Kanāli</a>
-  <a href="#" data-file="4.lv.pdf"  data-title="Pieslēgumi">Pieslēgumi</a>
-  <a href="#" data-file="5.lv.pdf"  data-title="Pāreja: taisnstūris → apaļš">Pāreja: taisnstūris → apaļš</a>
-  <a href="#" data-file="6.lv.pdf"  data-title="Pāreja: taisnstūris → taisnstūris">Pāreja: taisnstūris → taisnstūris</a>
-  <a href="#" data-file="7.lv.pdf"  data-title="Pāreja ar apakšējo rādiusu">Pāreja ar apakšējo rādiusu</a>
-  <a href="#" data-file="8.lv.pdf"  data-title="Vāks ar pieslēguma profilu">Vāks ar pieslēguma profilu</a>
-  <a href="#" data-file="9.lv.pdf"  data-title="Lietus vāciņš ar sietu">Lietus vāciņš ar sietu</a>
-  <a href="#" data-file="10.lv.pdf" data-title="Laikapstākļiem izturīgs režģis">Laikapstākļiem izturīgs režģis</a>
-  <a href="#" data-file="11.lv.pdf" data-title="Jumta adapters">Jumta adapters</a>
-  <a href="#" data-file="12.lv.pdf" data-title="Sienas režģis">Sienas režģis</a>
-  <a href="#" data-file="13.lv.pdf" data-title="Sienas kanāla rāmis">Sienas kanāla rāmis</a>
-  <a href="#" data-file="14.lv.pdf" data-title="Lietus apkakle / iekārtas">Lietus apkakle / iekārtas</a>
-</aside>
-
+        <aside class="list" id="pdf-list" aria-label="Dokumentu saraksts">
+          <a href="#" data-file="1.lv.pdf"  data-title="Titullapa" class="active">Titullapa</a>
+          <!-- 2.lv.pdf NAV — atstājam ārā -->
+          <a href="#" data-file="3.lv.pdf"  data-title="Kanāli">Kanāli</a>
+          <a href="#" data-file="4.lv.pdf"  data-title="Pieslēgumi">Pieslēgumi</a>
+          <a href="#" data-file="5.lv.pdf"  data-title="Pāreja: taisnstūris → apaļš">Pāreja: taisnstūris → apaļš</a>
+          <a href="#" data-file="6.lv.pdf"  data-title="Pāreja: taisnstūris → taisnstūris">Pāreja: taisnstūris → taisnstūris</a>
+          <a href="#" data-file="7.lv.pdf"  data-title="Pāreja ar apakšējo rādiusu">Pāreja ar apakšējo rādiusu</a>
+          <a href="#" data-file="8.lv.pdf"  data-title="Vāks ar pieslēguma profilu">Vāks ar pieslēguma profilu</a>
+          <a href="#" data-file="9.lv.pdf"  data-title="Lietus vāciņš ar sietu">Lietus vāciņš ar sietu</a>
+          <a href="#" data-file="10.lv.pdf" data-title="Laikapstākļiem izturīgs režģis">Laikapstākļiem izturīgs režģis</a>
+          <a href="#" data-file="11.lv.pdf" data-title="Jumta adapters">Jumta adapters</a>
+          <a href="#" data-file="12.lv.pdf" data-title="Sienas režģis">Sienas režģis</a>
+          <a href="#" data-file="13.lv.pdf" data-title="Sienas kanāla rāmis">Sienas kanāla rāmis</a>
+          <a href="#" data-file="14.lv.pdf" data-title="Lietus apkakle / iekārtas">Lietus apkakle / iekārtas</a>
+        </aside>
 
         <!-- LABĀ KOLOŅA: SKATĪTĀJS -->
         <section class="panel">
@@ -110,9 +111,9 @@
 
       function normalizeUrl(fileParam){
         if (!fileParam) return null;
-        if (/^https?:\/\//i.test(fileParam)) return fileParam;
-        if (/^(\/|\.{1,2}\/)/.test(fileParam)) return fileParam;
-        fileParam = fileParam.replace(/^lvpdf[\/\\]/i,'');
+        if (/^https?:\/\//i.test(fileParam)) return fileParam;     // absolūtā URL
+        if (/^(\/|\.{1,2}\/)/.test(fileParam)) return fileParam;   // jau ar / vai ./ ../
+        fileParam = fileParam.replace(/^lvpdf[\/\\]/i,'');          // drošībai noņem 'lvpdf/'
         return BASE + fileParam;
       }
 
@@ -134,7 +135,7 @@
         openPdfByUrl(url, title);
       }
 
-      // Tuki ?file=… param
+      // Tuki parametram ?file=
       const params = new URLSearchParams(location.search);
       const fileParam = params.get('file');
       if (fileParam) {
@@ -166,6 +167,7 @@
         const i = idx(); if (i < links.length-1) openPdfLink(links[i+1]);
       });
 
+      // Vienkāršs ielādes “health-check”
       let failTimer = setTimeout(() => { hint.hidden = false; }, 2500);
       frame.addEventListener('load', () => { clearTimeout(failTimer); hint.hidden = true; });
       frame.addEventListener('error', () => { hint.hidden = false; });
