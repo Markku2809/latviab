@@ -3,182 +3,175 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Niemi Isolering – PDF katalogs</title>
-  <meta name="description" content="Aplūkojiet un lejupielādējiet PDF katalogu un cenrādi." />
-  <link rel="stylesheet" href="./style.css" />
+  <title>PDF katalogs & dokumenti</title>
+  <meta name="description" content="Skatīt PDF katalogus un tehniskos dokumentus." />
+  <link rel="icon" href="../assets/favicon.ico" />
   <style>
-    .container{max-width:1100px;margin:0 auto;padding:clamp(16px,2vw,24px)}
-    .grid{display:grid;gap:16px}
-    @media(min-width:950px){.grid{grid-template-columns:280px 1fr}}
-    .list{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;overflow:hidden}
-    .list a{display:block;padding:.75rem 1rem;border-bottom:1px solid #eef1f4;text-decoration:none;color:#0f172a}
-    .list a:hover{background:rgba(0,0,0,.04)}
-    .list a.active{background:rgba(47,191,113,.10);font-weight:700}
-    .viewer{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;padding:12px}
-    .toolbar{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0 12px}
-    .btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;padding:.6rem 1rem;border-radius:.6rem;font-weight:700;text-decoration:none;cursor:pointer;border:2px solid transparent}
-    .btn{background:#2f855a;color:#fff}
-    .btn:hover{filter:brightness(.98)}
-    .btn-outline{border-color:#2f855a;color:#2f855a;background:transparent}
-    .btn-outline:hover{background:#e7f3ec}
-    iframe{width:100%;height:75vh;border:0;border-radius:8px}
-    .hint{font-size:.95rem;color:#48606a}
+    :root{--max:1100px}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#0f172a;margin:0}
+    a{color:#0e7c4f;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:clamp(16px,2vw,24px)}
+    header,footer{border-bottom:1px solid rgba(0,0,0,.08)}
+    footer{border-bottom:none;border-top:1px solid rgba(0,0,0,.08);margin-top:24px}
+    nav a{margin-right:12px}
+    h1{margin:6px 0 10px}
+    .muted{color:#466262}
+    .shell{display:grid;gap:14px;grid-template-columns:260px 1fr}
+    @media(max-width:900px){.shell{grid-template-columns:1fr}}
+    .list{border:1px solid rgba(0,0,0,.08);border-radius:14px;overflow:hidden;background:#fff}
+    .list a{display:block;padding:12px 14px;border-top:1px solid rgba(0,0,0,.06)}
+    .list a:first-child{border-top:none}
+    .list a.active{background:#eaf6f0;font-weight:700}
+    .panel{border:1px solid rgba(0,0,0,.08);border-radius:14px;background:#fff;padding:12px}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .btn{display:inline-block;background:#2fbf71;color:#06351f;font-weight:700;padding:9px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.08)}
+    .btn.secondary{background:#f5f5f5;color:#0f172a}
+    iframe{width:100%;height:70vh;border:0;border-radius:12px;background:#f8fafc}
+    .hint{margin-top:8px;padding:10px;border:1px dashed rgba(0,0,0,.25);border-radius:10px;background:#f7faf9;color:#29443f}
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="container topbar">
-      <div class="brand">NIEMI ISOLERING</div>
-      <nav class="menu" aria-label="Galvenā izvēlne">
-        <a href="./index.html">Sākums</a>
-        <a href="./produkti.html">Produkti</a>
-        <a href="./cenradis.html">Cenrādis</a>
-        <a href="./kontakti.html">Kontakti</a>
+    <div class="container">
+      <nav aria-label="Lapas navigācija">
+        <a href="../index.html">Sākums</a>
+        <a href="../produkti.html">Produkti</a>
+        <a href="../cenradis.html">Cenrādis</a>
+        <a href="../kontakti.html">Kontakti</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <h1>PDF katalogs & dokumenti</h1>
-    <p class="muted">Klikšķiniet sarakstā kreisajā pusē, lai skatītu dokumentu. Varat arī to lejupielādēt vai atvērt jaunā cilnē.</p>
+  <main>
+    <div class="container">
+      <h1>PDF katalogs & dokumenti</h1>
+      <p class="muted">Klikšķiniet sarakstā kreisajā pusē, lai skatītu dokumentu. Varat arī lejupielādēt vai atvērt jaunā cilnē.</p>
 
-    <div class="grid">
-      <!-- ===== VASEN LISTA: PĀRRAKSTIET SAVIEM FAILU NOSAUKUMIEM ===== -->
-      <aside class="list" id="pdf-list" aria-label="Dokumentu saraksts">
-        <!-- ⬇️ Aizstājiet šīs rindas ar saviem PDF failiem mapē ./pdf/ -->
-        <a href="./pdf/Dokuments_01_Titullapa.pdf" data-title="Titullapa" class="active">Titullapa</a>
-        <a href="./pdf/Dokuments_02_Cenradis.pdf" data-title="Cenrādis">Cenrādis</a>
-        <a href="./pdf/Dokuments_03_Kanali.pdf" data-title="Kanāli">Kanāli</a>
-        <a href="./pdf/Dokuments_04_Pieslegumi.pdf" data-title="Pieslēgumi">Pieslēgumi</a>
-        <a href="./pdf/Dokuments_05_Ara_Elementi.pdf" data-title="Āra elementi">Āra elementi</a>
-        <!-- ⬆️ Pievienojiet vai izdzēsiet pēc vajadzības -->
-      </aside>
+      <div class="shell">
+        <!-- KREISĀ KOLOŅA: SARAKSTS -->
+        <aside class="list" id="pdf-list" aria-label="Dokumentu saraksts">
+          <!-- IMPORTANT: data-file = precīzs fails lvpdf/ katalogā -->
+          <a href="#" data-file="1.lv.pdf"  data-title="Titullapa" class="active">Titullapa</a>
+          <a href="#" data-file="2.lv.pdf"  data-title="Cenrādis">Cenrādis</a>
+          <a href="#" data-file="3.lv.pdf"  data-title="Kanāli">Kanāli</a>
+          <a href="#" data-file="4.lv.pdf"  data-title="Pieslēgumi">Pieslēgumi</a>
+          <a href="#" data-file="5.lv.pdf"  data-title="Pāreja: taisnstūris → apaļš">Pāreja: taisnstūris → apaļš</a>
+          <a href="#" data-file="6.lv.pdf"  data-title="Pāreja: taisnstūris → taisnstūris">Pāreja: taisnstūris → taisnstūris</a>
+          <a href="#" data-file="7.lv.pdf"  data-title="Pāreja ar apakšējo rādiusu">Pāreja ar apakšējo rādiusu</a>
+          <a href="#" data-file="8.lv.pdf"  data-title="Vāks ar pieslēguma profilu">Vāks ar pieslēguma profilu</a>
+          <a href="#" data-file="9.lv.pdf"  data-title="Lietus vāciņš ar sietu">Lietus vāciņš ar sietu</a>
+          <a href="#" data-file="10.lv.pdf" data-title="Laikapstākļiem izturīgs režģis">Laikapstākļiem izturīgs režģis</a>
+          <a href="#" data-file="11.lv.pdf" data-title="Jumta adapters">Jumta adapters</a>
+          <a href="#" data-file="12.lv.pdf" data-title="Sienas režģis">Sienas režģis</a>
+          <a href="#" data-file="13.lv.pdf" data-title="Sienas kanāla rāmis">Sienas kanāla rāmis</a>
+          <a href="#" data-file="14.lv.pdf" data-title="Lietus apkakle / iekārtas">Lietus apkakle / iekārtas</a>
+        </aside>
 
-      <!-- ===== LABĀ PUSE: SKATĪTĀJS ===== -->
-      <section class="viewer">
-        <div class="toolbar">
-          <a href="./index.html" class="btn-outline">← Atpakaļ uz sākumlapu</a>
-          <button id="prev" class="btn-outline" type="button">⟨ Iepriekšējais</button>
-          <button id="next" class="btn-outline" type="button">Nākamais ⟩</button>
-          <a id="download" class="btn" href="./pdf/Dokuments_01_Titullapa.pdf" download>Lejupielādēt PDF</a>
-          <a id="open-new" class="btn-outline" href="./pdf/Dokuments_01_Titullapa.pdf" target="_blank" rel="noopener">Atvērt jaunā cilnē</a>
-        </div>
+        <!-- LABĀ KOLOŅA: SKATĪTĀJS -->
+        <section class="panel">
+          <div class="toolbar">
+            <a class="btn secondary" href="../produkti.html">← Atpakaļ uz sākumlapu</a>
+            <button id="prev" class="btn secondary">〈 Iepriekšējais</button>
+            <button id="next" class="btn secondary">Nākamais 〉</button>
+            <a id="open-new" class="btn secondary" href="#" target="_blank" rel="noopener">Atvērt jaunā cilnē</a>
+            <a id="download" class="btn" href="#" download>Lejupielādēt PDF</a>
+          </div>
 
-        <iframe id="frame" src="./pdf/Dokuments_01_Titullapa.pdf" title="Titullapa" aria-label="PDF skatītājs"></iframe>
-        <p class="hint" id="load-hint" hidden>
-          Ja dokuments neielādējas, <a id="open-fallback" href="#" target="_blank" rel="noopener">atveriet to jaunā cilnē</a>.
-        </p>
-      </section>
+          <iframe id="frame" title="PDF skatītājs"></iframe>
+
+          <p id="load-hint" class="hint" hidden>
+            Ja dokuments neielādējas, atveriet to tieši: <a id="open-fallback" href="#" target="_blank" rel="noopener">atvērt PDF</a>.
+          </p>
+        </section>
+      </div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <div class="divider"></div>
-      <div class="footer-grid">
-        <div class="small"><strong>Niemi Isolering</strong><br/>Ventilācija & Metāls</div>
-        <div class="small">
-          E-pasts: <a href="mailto:isolerigniemi@gmail.com">isolerigniemi@gmail.com</a><br/>
-          WhatsApp: <a href="https://wa.me/358402434364" rel="noopener">+358 40 243 4364</a>
-        </div>
-      </div>
+      <p>© Niemi Isolering. Visas tiesības aizsargātas.</p>
     </div>
   </footer>
-<script>
-  (function(){
-    // ✅ OIKEA polku: viewer on latviski/-kansiossa ja PDF:t latviski/lvpdf/
-    const BASE = '/lvpdf/';
 
+  <script>
+    (function(){
+      // PDF faili ir /lvpdf/ (juures katalogs)
+      const BASE = '/lvpdf/';
 
-    const list = document.getElementById('pdf-list');
-    const frame = document.getElementById('frame');
-    const dl = document.getElementById('download');
-    const open = document.getElementById('open-new');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const hint = document.getElementById('load-hint');
-    const openFallback = document.getElementById('open-fallback');
+      const list = document.getElementById('pdf-list');
+      const frame = document.getElementById('frame');
+      const dl = document.getElementById('download');
+      const open = document.getElementById('open-new');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      const hint = document.getElementById('load-hint');
+      const openFallback = document.getElementById('open-fallback');
 
-    const links = list ? Array.from(list.querySelectorAll('a')) : [];
+      const links = Array.from(list.querySelectorAll('a'));
 
-    // Normalisoi URL param: sallitaan "1.lv.pdf", "lvpdf/1.lv.pdf", "/latviski/lvpdf/1.lv.pdf" tai koko URL
-    function normalizeUrl(fileParam){
-      if (!fileParam) return null;
-      // jos koko http(s) url
-      if (/^https?:\/\//i.test(fileParam)) return fileParam;
-      // jos alkaa / tai ./ tai ../ -> käytä sellaisenaan
-      if (/^(\/|\.{1,2}\/)/.test(fileParam)) return fileParam;
-      // jos alkaa lvpdf/ -> poista etuliite ja liitä BASE
-      fileParam = fileParam.replace(/^lvpdf[\/\\]/i,'');
-      return BASE + fileParam;
-    }
-
-    function openPdfByUrl(url, title){
-      frame.src = url;
-      frame.title = title || 'PDF';
-      dl.href = url;
-      open.href = url;
-      openFallback.href = url;
-      hint.hidden = true;
-    }
-
-    function openPdfLink(a){
-      links.forEach(x => x.classList.remove('active'));
-      a.classList.add('active');
-      const file = a.dataset.file || a.getAttribute('href');
-      const title = a.dataset.title || a.textContent.trim() || 'PDF';
-      const url = normalizeUrl(file) || BASE + file;
-      openPdfByUrl(url, title);
-    }
-
-    // Jos tuotteista tultiin linkillä ?file=...
-    const params = new URLSearchParams(location.search);
-    const fileParam = params.get('file');
-    if (fileParam) {
-      const want = fileParam.split('/').pop(); // esim. "1.lv.pdf"
-      // Yritä myös aktivoida listassa vastaava rivi
-      const match = links.find(a => {
-        const f = (a.dataset.file || a.getAttribute('href') || '').split('/').pop();
-        return f.toLowerCase() === want.toLowerCase();
-      });
-      const url = normalizeUrl(fileParam);
-      if (match) {
-        openPdfLink(match);
-      } else if (url) {
-        // ei listassa, lataa silti
-        openPdfByUrl(url, 'PDF');
+      function normalizeUrl(fileParam){
+        if (!fileParam) return null;
+        if (/^https?:\/\//i.test(fileParam)) return fileParam;
+        if (/^(\/|\.{1,2}\/)/.test(fileParam)) return fileParam;
+        fileParam = fileParam.replace(/^lvpdf[\/\\]/i,'');
+        return BASE + fileParam;
       }
-    } else if (links.length) {
-      // Ei parametriä → avaa listan eka
-      openPdfLink(links[0]);
-    }
 
-    // Klikit vasemmalta listalta
-    list && list.addEventListener('click', function(e){
-      const a = e.target.closest('a'); if (!a) return;
-      e.preventDefault();
-      openPdfLink(a);
-    });
+      function openPdfByUrl(url, title){
+        frame.src = url;
+        frame.title = title || 'PDF';
+        dl.href = url;
+        open.href = url;
+        openFallback.href = url;
+        hint.hidden = true;
+      }
 
-    // Edellinen / Seuraava
-    function currentIndex(){ return links.findIndex(x => x.classList.contains('active')); }
-    prevBtn && prevBtn.addEventListener('click', () => {
-      const i = currentIndex();
-      if (i > 0) openPdfLink(links[i-1]);
-    });
-    nextBtn && nextBtn.addEventListener('click', () => {
-      const i = currentIndex();
-      if (i < links.length - 1) openPdfLink(links[i+1]);
-    });
+      function openPdfLink(a){
+        links.forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+        const file = a.dataset.file;
+        const title = a.dataset.title || a.textContent.trim() || 'PDF';
+        const url = normalizeUrl(file);
+        openPdfByUrl(url, title);
+      }
 
-    // Fallback vihje jos iframe ei lataudu
-    frame.addEventListener('error', () => { hint.hidden = false; });
-    let failTimer;
-    frame.addEventListener('load', () => { clearTimeout(failTimer); hint.hidden = true; });
-    failTimer = setTimeout(() => { hint.hidden = false; }, 2000);
-  })();
-</script>
+      // Tuki ?file=… param
+      const params = new URLSearchParams(location.search);
+      const fileParam = params.get('file');
+      if (fileParam) {
+        const want = fileParam.split('/').pop();
+        const match = links.find(a => a.dataset.file && a.dataset.file.split('/').pop().toLowerCase() === want.toLowerCase());
+        const url = normalizeUrl(fileParam);
+        if (match) {
+          openPdfLink(match);
+        } else if (url) {
+          openPdfByUrl(url, 'PDF');
+        } else {
+          openPdfLink(links[0]);
+        }
+      } else {
+        openPdfLink(links[0]);
+      }
 
+      list.addEventListener('click', function(e){
+        const a = e.target.closest('a'); if (!a) return;
+        e.preventDefault();
+        openPdfLink(a);
+      });
 
+      function idx(){ return links.findIndex(x => x.classList.contains('active')); }
+      prevBtn.addEventListener('click', () => {
+        const i = idx(); if (i > 0) openPdfLink(links[i-1]);
+      });
+      nextBtn.addEventListener('click', () => {
+        const i = idx(); if (i < links.length-1) openPdfLink(links[i+1]);
+      });
+
+      let failTimer = setTimeout(() => { hint.hidden = false; }, 2500);
+      frame.addEventListener('load', () => { clearTimeout(failTimer); hint.hidden = true; });
+      frame.addEventListener('error', () => { hint.hidden = false; });
+    })();
+  </script>
 </body>
 </html>
