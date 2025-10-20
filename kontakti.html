@@ -4,116 +4,84 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Niemi Isolering – Kontakti</title>
-  <meta name="description" content="Sazinieties ar mums – ātra atbilde pa e-pastu vai WhatsApp. Pieprasiet piedāvājumu vai sūtiet zīmējumus." />
-  <link rel="stylesheet" href="./style.css" />
+  <meta name="description" content="Sazinieties ar Niemi Isolering – ventilācijas un metāla izstrādājumu ražotājs Latvijā un Somijā." />
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
   <style>
-    .container{max-width:1100px;margin:0 auto;padding:1rem}
-    .grid{display:grid;gap:1.25rem}
-    @media(min-width:900px){.grid.cols-2{grid-template-columns:1fr 1fr}}
-    .card{border:1px solid #e6e6e6;border-radius:14px;padding:1rem;background:#fff}
-    .muted{opacity:.85}
-    input,select,textarea{width:100%;padding:.7rem;border:1px solid #ccc;border-radius:10px}
-    label{font-weight:600}
-    .btn{display:inline-block;padding:.7rem 1rem;border-radius:10px;border:1px solid #222;text-decoration:none;cursor:pointer;background:#2f855a;color:#fff}
-    .btn.secondary{background:#f5f5f5;color:#333;border:1px solid #aaa}
-    .form-row{display:grid;gap:.5rem;margin:.6rem 0}
-    .form-row.half{grid-template-columns:1fr}
-    @media(min-width:640px){.form-row.half{grid-template-columns:1fr 1fr}}
-    .help{font-size:.9rem}
-    .map{aspect-ratio:16/9;background:#f7f7f7;border:1px dashed #ccc;border-radius:12px;display:flex;align-items:center;justify-content:center}
-    .chips{display:flex;gap:.5rem;flex-wrap:wrap}
-    .chip{border:1px solid #ccc;border-radius:999px;padding:.15rem .6rem;font-size:.85rem}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#0f172a;margin:0;background:#f9fafb}
+    .container{max-width:1100px;margin:0 auto;padding:clamp(16px,2vw,24px)}
+    header,footer{border-bottom:1px solid rgba(0,0,0,.08)}
+    footer{border-bottom:none;border-top:1px solid rgba(0,0,0,.08);margin-top:24px}
+    .brand{font-weight:800;letter-spacing:.3px}
+    nav a{margin-right:14px;padding:6px 8px;border-radius:8px}
+    nav a[aria-current="page"]{background:rgba(0,0,0,.06);text-decoration:none}
+    h1{margin:8px 0 12px}
+    .muted{color:#475861}
+    .card{border:1px solid rgba(0,0,0,.08);border-radius:14px;background:#fff;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.05);margin-bottom:16px}
+    .info p{margin:6px 0}
+    a{color:#0e7c4f;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .btn{display:inline-block;background:#2fbf71;color:#06351f;font-weight:700;padding:9px 12px;border-radius:10px;margin-top:8px}
+    .btn:hover{filter:brightness(1.05)}
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header class="site-header">
     <div class="container topbar">
       <div class="brand">NIEMI ISOLERING</div>
-     <nav aria-label="Galvenā izvēlne">
-  <a href="/index.html">Sākums</a>
-  <a href="/produkti.html">Produkti</a>
-  <a href="/cenradis.html">Cenrādis</a>
-  <a href="/kontakti.html">Kontakti</a>
-</nav>
-
+      <nav aria-label="Galvenā izvēlne">
+        <a href="/index.html">Sākums</a>
+        <a href="/produkti.html">Produkti</a>
+        <a href="/cenradis.html">Cenrādis</a>
+        <a href="/kontakti.html" aria-current="page">Kontakti</a>
+      </nav>
     </div>
   </header>
 
   <main>
     <div class="container">
       <h1>Kontakti</h1>
-      <p class="muted">Aizpildiet formu vai rakstiet mums tieši – atbildēsim drīz.</p>
+      <p class="muted">Sazinieties ar mums – atbildēsim ātri un palīdzēsim atrast piemērotāko risinājumu.</p>
 
-      <div class="grid cols-2">
-        <!-- Kontaktforma -->
-        <section class="card">
-          <h2>Sūtīt ziņu</h2>
-          <form action="https://formspree.io/f/mvgwyebg" method="POST">
-            <div class="form-row half">
-              <div>
-                <label for="name">Vārds</label>
-                <input id="name" name="name" type="text" required>
-              </div>
-              <div>
-                <label for="company">Uzņēmums (nav obligāti)</label>
-                <input id="company" name="company" type="text">
-              </div>
-            </div>
+      <section class="card info">
+        <h3>Galvenā kontaktinformācija</h3>
+        <p><strong>Niemi Isolering</strong><br>Ventilācija & Metāls</p>
+        <p>E-pasts: <a href="mailto:isolerigniemi@gmail.com">isolerigniemi@gmail.com</a></p>
+        <p>WhatsApp: <a href="https://wa.me/358402434364" target="_blank" rel="noopener">+358 40 243 4364</a></p>
+        <p>Valsts: Somija / Latvija</p>
+        <a class="btn" href="mailto:isolerigniemi@gmail.com">Rakstīt e-pastu</a>
+      </section>
 
-            <div class="form-row half">
-              <div>
-                <label for="email">E-pasts</label>
-                <input id="email" name="email" type="email" required>
-              </div>
-              <div>
-                <label for="phone">Telefons / WhatsApp</label>
-                <input id="phone" name="phone" type="tel">
-              </div>
-            </div>
+      <section class="card">
+        <h3>Darba laiks</h3>
+        <p>Pirmdiena – Piektdiena: 09 – 17<br>
+        Sestdiena, Svētdiena: slēgts</p>
+      </section>
 
-            <div class="form-row">
-              <label for="topic">Tēma</label>
-              <select id="topic" name="topic" required>
-                <option value="">Izvēlieties tēmu…</option>
-                <option>Piedāvājums / cena</option>
-                <option>Speciālie izmēri pēc zīmējuma</option>
-                <option>Standarta produkti</option>
-                <option>Piegāde un dokumentācija</option>
-                <option>Cits jautājums</option>
-              </select>
-            </div>
+      <section class="card">
+        <h3>Sociālie sakari</h3>
+        <p>Atrodamies arī sociālajos tīklos – rakstiet mums, ja vēlaties sadarboties vai saņemt jaunākos projektus.</p>
+        <p><a href="https://www.niemi-isolering.com" target="_blank" rel="noopener">🌐 www.niemi-isolering.com</a></p>
+      </section>
 
-            <div class="form-row">
-              <label for="message">Ziņojums</label>
-              <textarea id="message" name="message" rows="6" placeholder="Aprakstiet nepieciešamos izstrādājumus, izmērus vai pievienojiet saiti uz zīmējumiem." required></textarea>
-            </div>
+    </div>
+  </main>
 
-            <button class="btn" type="submit">Sūtīt</button>
-            <button class="btn secondary" type="reset">Notīrīt</button>
-          </form>
-          <p class="help muted" style="margin-top:.5rem">
-            Nosūtot formu, jūs piekrītat datu izmantošanai, lai atbildētu uz jūsu pieprasījumu. Dati netiek nodoti trešajām personām.
-          </p>
-        </section>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="footer-grid">
+        <div class="small"><strong>Niemi Isolering</strong><br/>Ventilācija & Metāls</div>
+        <div class="small">
+          E-pasts: <a href="mailto:isolerigniemi@gmail.com">isolerigniemi@gmail.com</a><br/>
+          WhatsApp: <a href="https://wa.me/358402434364" target="_blank" rel="noopener">+358 40 243 4364</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-        <!-- Kontakti -->
-        <aside class="card">
-          <h2>Kontaktinformācija</h2>
-          <p>
-            E-pasts: <a href="mailto:isolerigniemi@gmail.com">isolerigniemi@gmail.com</a><br/>
-            WhatsApp: <a href="https://wa.me/358402434364" rel="noopener">+358 40 243 4364</a>
-          </p>
-
-          <h3>Darba laiks</h3>
-          <p class="muted">Pirmdiena–Piektdiena 08:00–16:00 (EET)</p>
-
-          <h3>Mēs palīdzam ar:</h3>
-          <div class="chips">
-            <span class="chip">Materiālu cena</span>
-            <span class="chip">Kanāli</span>
-            <span class="chip">Speciālie izmēri</span>
-            <span class="chip">PDF dokumentācija</span>
-            <span class="chip">Piegāde</span>
-          </div>
-
-          <h3>Karte</h3>
+</body>
+</html>
