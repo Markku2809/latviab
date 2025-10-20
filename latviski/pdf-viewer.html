@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Niemi Isolering – PDF katalogs</title>
+  <meta name="description" content="Aplūkojiet un lejupielādējiet PDF katalogu un cenrādi." />
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    .container{max-width:1100px;margin:0 auto;padding:clamp(16px,2vw,24px)}
+    .grid{display:grid;gap:16px}
+    @media(min-width:950px){.grid{grid-template-columns:280px 1fr}}
+    .list{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;overflow:hidden}
+    .list a{display:block;padding:.75rem 1rem;border-bottom:1px solid #eef1f4;text-decoration:none;color:#0f172a}
+    .list a:hover{background:rgba(0,0,0,.04)}
+    .list a.active{background:rgba(47,191,113,.10);font-weight:700}
+    .viewer{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;padding:12px}
+    .toolbar{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0 12px}
+    .btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;padding:.6rem 1rem;border-radius:.6rem;font-weight:700;text-decoration:none;cursor:pointer;border:2px solid transparent}
+    .btn{background:#2f855a;color:#fff}
+    .btn:hover{filter:brightness(.98)}
+    .btn-outline{border-color:#2f855a;color:#2f855a;background:transparent}
+    .btn-outline:hover{background:#e7f3ec}
+    iframe{width:100%;height:75vh;border:0;border-radius:8px}
+    .hint{font-size:.95rem;color:#48606a}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container topbar">
+      <div class="brand">NIEMI ISOLERING</div>
+      <nav class="menu" aria-label="Galvenā izvēlne">
+        <a href="./index.html">Sākums</a>
+        <a href="./produkti.html">Produkti</a>
+        <a href="./cenradis.html">Cenrādis</a>
+        <a href="./kontakti.html">Kontakti</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>PDF katalogs & dokumenti</h1>
+    <p class="muted">Klikšķiniet sarakstā kreisajā pusē, lai skatītu dokumentu. Varat arī to lejupielādēt vai atvērt jaunā cilnē.</p>
+
+    <div class="grid">
+      <!-- ===== VASEN LISTA: PĀRRAKSTIET SAVIEM FAILU NOSAUKUMIEM ===== -->
+      <aside class="list" id="pdf-list" aria-label="Dokumentu saraksts">
+        <!-- ⬇️ Aizstājiet šīs rindas ar saviem PDF failiem mapē ./pdf/ -->
+        <a href="./pdf/Dokuments_01_Titullapa.pdf" data-title="Titullapa" class="active">Titullapa</a>
+        <a href="./pdf/Dokuments_02_Cenradis.pdf" data-title="Cenrādis">Cenrādis</a>
+        <a href="./pdf/Dokuments_03_Kanali.pdf" data-title="Kanāli">Kanāli</a>
+        <a href="./pdf/Dokuments_04_Pieslegumi.pdf" data-title="Pieslēgumi">Pieslēgumi</a>
+        <a href="./pdf/Dokuments_05_Ara_Elementi.pdf" data-title="Āra elementi">Āra elementi</a>
+        <!-- ⬆️ Pievienojiet vai izdzēsiet pēc vajadzības -->
+      </aside>
+
+      <!-- ===== LABĀ PUSE: SKATĪTĀJS ===== -->
+      <section class="viewer">
+        <div class="toolbar">
+          <a href="./index.html" class="btn-outline">← Atpakaļ uz sākumlapu</a>
+          <button id="prev" class="btn-outline" type="button">⟨ Iepriekšējais</button>
+          <button id="next" class="btn-outline" type="button">Nākamais ⟩</button>
+          <a id="download" class="btn" href="./pdf/Dokuments_01_Titullapa.pdf" download>Lejupielādēt PDF</a>
+          <a id="open-new" class="btn-outline" href="./pdf/Dokuments_01_Titullapa.pdf" target="_blank" rel="noopener">Atvērt jaunā cilnē</a>
+        </div>
+
+        <iframe id="frame" src="./pdf/Dokuments_01_Titullapa.pdf" title="Titullapa" aria-label="PDF skatītājs"></iframe>
+        <p class="hint" id="load-hint" hidden>
+          Ja dokuments neielādējas, <a id="open-fallback" href="#" target="_blank" rel="noopener">atveriet to jaunā cilnē</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="footer-grid">
+        <div class="small"><strong>Niemi Isolering</strong><br/>Ventilācija & Metāls</div>
+        <div class="small">
+          E-pasts: <a href="mailto:isolerigniemi@gmail.com">isolerigniemi@gmail.com</a><br/>
+          WhatsApp: <a href="https://wa.me/358402434364" rel="noopener">+358 40 243 4364</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const list = document.getElementById('pdf-list');
+      const frame = document.getElementById('frame');
+      const dl = document.getElementById('download');
+      const open = document.getElementById('open-new');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      const hint = document.getElementById('load-hint');
+      const openFallback = document.getElementById('open-fallback');
+
+      const links = Array.from(list.querySelectorAll('a'));
+
+      function openPdf(a){
+        if(!a) return;
+        links.forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+        const url = a.getAttribute('href');
+        const title = a.dataset.title || 'PDF';
+        frame.src = url;
+        frame.title = title;
+        dl.href = url;
+        open.href = url;
+        openFallback.href = url;
+        hint.hidden = true;
+      }
+
+      // Kliks no saraksta
+      list.addEventListener('click', function(e){
+        const a = e.target.closest('a'); if(!a) return;
+        e.preventDefault();
+        openPdf(a);
+      });
+
+      // Iepriekšējais / Nākamais
+      function currentIndex(){ return links.findIndex(x => x.classList.contains('active')); }
+      prevBtn.addEventListener('click', () => {
+        const i = currentIndex();
+        if(i > 0) openPdf(links[i-1]);
+      });
+      nextBtn.addEventListener('click', () => {
+        const i = currentIndex();
+        if(i < links.length - 1) openPdf(links[i+1]);
+      });
+
+      // Ja iframe neielādējas (404 u.c.), parādām norādi atvērt jaunā cilnē
+      frame.addEventListener('error', () => { hint.hidden = false; });
+      // Safari/dažos gadījumos onerror nestrādā ar <iframe>, tāpēc pievienojam laika rezervi:
+      let failTimer;
+      frame.addEventListener('load', () => {
+        clearTimeout(failTimer);
+        hint.hidden = true;
+      });
+      failTimer = setTimeout(() => { hint.hidden = false; }, 2000);
+    })();
+  </script>
+</body>
+</html>
