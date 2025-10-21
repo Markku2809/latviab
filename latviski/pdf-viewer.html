@@ -3,175 +3,80 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PDF katalogs & dokumenti</title>
-  <meta name="description" content="Skatīt PDF katalogus un tehniskos dokumentus." />
-  <link rel="icon" href="../assets/favicon.ico" />
+  <title>PDF skatītājs – Niemi Isolering</title>
+  <link rel="stylesheet" href="../style.css" />
   <style>
-    :root{--max:1100px}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#0f172a;margin:0}
-    a{color:#0e7c4f;text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:var(--max);margin:0 auto;padding:clamp(16px,2vw,24px)}
-    header,footer{border-bottom:1px solid rgba(0,0,0,.08)}
-    footer{border-bottom:none;border-top:1px solid rgba(0,0,0,.08);margin-top:24px}
-    nav a{margin-right:12px}
-    h1{margin:6px 0 10px}
-    .muted{color:#466262}
-    .shell{display:grid;gap:14px;grid-template-columns:260px 1fr}
-    @media(max-width:900px){.shell{grid-template-columns:1fr}}
-    .list{border:1px solid rgba(0,0,0,.08);border-radius:14px;overflow:hidden;background:#fff}
-    .list a{display:block;padding:12px 14px;border-top:1px solid rgba(0,0,0,.06)}
-    .list a:first-child{border-top:none}
-    .list a.active{background:#eaf6f0;font-weight:700}
-    .panel{border:1px solid rgba(0,0,0,.08);border-radius:14px;background:#fff;padding:12px}
-    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-    .btn{display:inline-block;background:#2fbf71;color:#06351f;font-weight:700;padding:9px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.08)}
-    .btn.secondary{background:#f5f5f5;color:#0f172a}
-    iframe{width:100%;height:70vh;border:0;border-radius:12px;background:#f8fafc}
-    .hint{margin-top:8px;padding:10px;border:1px dashed rgba(0,0,0,.25);border-radius:10px;background:#f7faf9;color:#29443f}
+    .viewer-top {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,.9);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      backdrop-filter: blur(6px);
+    }
+    .viewer-bar {
+      max-width: var(--max); margin: 0 auto; padding: 10px 16px;
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+    }
+    .viewer-actions { display:flex; gap:8px; flex-wrap: wrap; }
+    .pdf-frame {
+      width: 100%; height: 88vh; border: 0; background: #f5f7f8;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+    }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <nav aria-label="Lapas navigācija">
-        <a href="../index.html">Sākums</a>
-        <a href="../produkti.html">Produkti</a>
-        <a href="../cenradis.html">Cenrādis</a>
-        <a href="../kontakti.html">Kontakti</a>
-      </nav>
+  <header class="viewer-top">
+    <div class="viewer-bar">
+      <div class="brand">NIEMI ISOLERING</div>
+      <div class="viewer-actions">
+        <button class="btn-outline" onclick="history.back()">← Atpakaļ</button>
+        <a id="dl" class="btn" href="#" target="_blank" rel="noopener">Lejupielādēt PDF</a>
+        <a class="btn-outline" href="../index.html">Sākums</a>
+      </div>
     </div>
   </header>
 
-  <main>
-    <div class="container">
-      <h1>PDF katalogs & dokumenti</h1>
-      <p class="muted">Klikšķiniet sarakstā kreisajā pusē, lai skatītu dokumentu. Varat arī lejupielādēt vai atvērt jaunā cilnē.</p>
-
-      <div class="shell">
-        <!-- KREISĀ KOLOŅA: SARAKSTS -->
-        <aside class="list" id="pdf-list" aria-label="Dokumentu saraksts">
-          <a href="#" data-file="1.lv.pdf"  data-title="Titullapa" class="active">Titullapa</a>
-          <!-- 2.lv.pdf NAV — atstājam ārā -->
-          <a href="#" data-file="3.lv.pdf"  data-title="Kanāli">Kanāli</a>
-          <a href="#" data-file="4.lv.pdf"  data-title="Pieslēgumi">Pieslēgumi</a>
-          <a href="#" data-file="5.lv.pdf"  data-title="Pāreja: taisnstūris → apaļš">Pāreja: taisnstūris → apaļš</a>
-          <a href="#" data-file="6.lv.pdf"  data-title="Pāreja: taisnstūris → taisnstūris">Pāreja: taisnstūris → taisnstūris</a>
-          <a href="#" data-file="7.lv.pdf"  data-title="Pāreja ar apakšējo rādiusu">Pāreja ar apakšējo rādiusu</a>
-          <a href="#" data-file="8.lv.pdf"  data-title="Vāks ar pieslēguma profilu">Vāks ar pieslēguma profilu</a>
-          <a href="#" data-file="9.lv.pdf"  data-title="Lietus vāciņš ar sietu">Lietus vāciņš ar sietu</a>
-          <a href="#" data-file="10.lv.pdf" data-title="Laikapstākļiem izturīgs režģis">Laikapstākļiem izturīgs režģis</a>
-          <a href="#" data-file="11.lv.pdf" data-title="Jumta adapters">Jumta adapters</a>
-          <a href="#" data-file="12.lv.pdf" data-title="Sienas režģis">Sienas režģis</a>
-          <a href="#" data-file="13.lv.pdf" data-title="Sienas kanāla rāmis">Sienas kanāla rāmis</a>
-          <a href="#" data-file="14.lv.pdf" data-title="Lietus apkakle / iekārtas">Lietus apkakle / iekārtas</a>
-        </aside>
-
-        <!-- LABĀ KOLOŅA: SKATĪTĀJS -->
-        <section class="panel">
-          <div class="toolbar">
-            <a class="btn secondary" href="../produkti.html">← Atpakaļ uz sākumlapu</a>
-            <button id="prev" class="btn secondary">〈 Iepriekšējais</button>
-            <button id="next" class="btn secondary">Nākamais 〉</button>
-            <a id="open-new" class="btn secondary" href="#" target="_blank" rel="noopener">Atvērt jaunā cilnē</a>
-            <a id="download" class="btn" href="#" download>Lejupielādēt PDF</a>
-          </div>
-
-          <iframe id="frame" title="PDF skatītājs"></iframe>
-
-          <p id="load-hint" class="hint" hidden>
-            Ja dokuments neielādējas, atveriet to tieši: <a id="open-fallback" href="#" target="_blank" rel="noopener">atvērt PDF</a>.
-          </p>
-        </section>
-      </div>
-    </div>
+  <main class="container" style="max-width:none; padding-top:10px;">
+    <iframe id="frame" class="pdf-frame" title="PDF skatītājs"></iframe>
+    <p class="muted" id="fallback" style="margin-top:.5rem; display:none">
+      Ja PDF neatveras, noklikšķiniet šeit:
+      <a id="raw" href="#" target="_blank" rel="noopener">atvērt tiešo saiti</a>.
+    </p>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© Niemi Isolering. Visas tiesības aizsargātas.</p>
-    </div>
-  </footer>
-
   <script>
-    (function(){
-      // PDF faili ir /lvpdf/ (juures katalogs)
-      const BASE = '/lvpdf/';
+  // Hae ?file=... parametrin arvo
+  const params = new URLSearchParams(location.search);
+  let file = params.get('file') || '';
+  // Perusvarmistus: ei saa hypätä domainin ulkopuolelle
+  if (file.startsWith('http')) file = '';
+  if (!file) file = 'lvpdf/1.lv.pdf'; // varalla
 
-      const list = document.getElementById('pdf-list');
-      const frame = document.getElementById('frame');
-      const dl = document.getElementById('download');
-      const open = document.getElementById('open-new');
-      const prevBtn = document.getElementById('prev');
-      const nextBtn = document.getElementById('next');
-      const hint = document.getElementById('load-hint');
-      const openFallback = document.getElementById('open-fallback');
+  const frame = document.getElementById('frame');
+  const dl = document.getElementById('dl');
+  const raw = document.getElementById('raw');
+  const fallback = document.getElementById('fallback');
 
-      const links = Array.from(list.querySelectorAll('a'));
+  // Pages-osoite
+  const pagesURL = '../' + file.replace(/^\/*/, '');
+  // Raw-varalinkki
+  const rawURL = 'https://raw.githubusercontent.com/Markku2809/latviab/main/' + file.replace(/^\/*/, '');
 
-      function normalizeUrl(fileParam){
-        if (!fileParam) return null;
-        if (/^https?:\/\//i.test(fileParam)) return fileParam;     // absolūtā URL
-        if (/^(\/|\.{1,2}\/)/.test(fileParam)) return fileParam;   // jau ar / vai ./ ../
-        fileParam = fileParam.replace(/^lvpdf[\/\\]/i,'');          // drošībai noņem 'lvpdf/'
-        return BASE + fileParam;
-      }
+  frame.src = pagesURL;
+  dl.href = pagesURL;
+  raw.href = rawURL;
 
-      function openPdfByUrl(url, title){
-        frame.src = url;
-        frame.title = title || 'PDF';
-        dl.href = url;
-        open.href = url;
-        openFallback.href = url;
-        hint.hidden = true;
-      }
-
-      function openPdfLink(a){
-        links.forEach(x => x.classList.remove('active'));
-        a.classList.add('active');
-        const file = a.dataset.file;
-        const title = a.dataset.title || a.textContent.trim() || 'PDF';
-        const url = normalizeUrl(file);
-        openPdfByUrl(url, title);
-      }
-
-      // Tuki parametram ?file=
-      const params = new URLSearchParams(location.search);
-      const fileParam = params.get('file');
-      if (fileParam) {
-        const want = fileParam.split('/').pop();
-        const match = links.find(a => a.dataset.file && a.dataset.file.split('/').pop().toLowerCase() === want.toLowerCase());
-        const url = normalizeUrl(fileParam);
-        if (match) {
-          openPdfLink(match);
-        } else if (url) {
-          openPdfByUrl(url, 'PDF');
-        } else {
-          openPdfLink(links[0]);
-        }
-      } else {
-        openPdfLink(links[0]);
-      }
-
-      list.addEventListener('click', function(e){
-        const a = e.target.closest('a'); if (!a) return;
-        e.preventDefault();
-        openPdfLink(a);
-      });
-
-      function idx(){ return links.findIndex(x => x.classList.contains('active')); }
-      prevBtn.addEventListener('click', () => {
-        const i = idx(); if (i > 0) openPdfLink(links[i-1]);
-      });
-      nextBtn.addEventListener('click', () => {
-        const i = idx(); if (i < links.length-1) openPdfLink(links[i+1]);
-      });
-
-      // Vienkāršs ielādes “health-check”
-      let failTimer = setTimeout(() => { hint.hidden = false; }, 2500);
-      frame.addEventListener('load', () => { clearTimeout(failTimer); hint.hidden = true; });
-      frame.addEventListener('error', () => { hint.hidden = false; });
-    })();
+  // Jos Pages-linkki ei vastaa (esim. 404), näytetään varalinkki
+  fetch(pagesURL, {method:'HEAD'}).then(r => {
+    if (!r.ok) {
+      frame.src = rawURL;
+      dl.href = rawURL;
+      fallback.style.display = 'block';
+    }
+  }).catch(() => {
+    frame.src = rawURL;
+    dl.href = rawURL;
+    fallback.style.display = 'block';
+  });
   </script>
 </body>
 </html>
