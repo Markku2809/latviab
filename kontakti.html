@@ -56,22 +56,32 @@
              1) Vaihda action="mailto:..." (avaa sähköpostiohjelman)
              2) Käytä Formspreeä tms. ja aseta heidän action-osoitteensa.
         -->
-        <form action="mailto:info@example.com" method="post" enctype="text/plain">
-          <label for="name">Vārds</label>
-          <input id="name" name="Vārds" type="text" placeholder="Jūsu vārds" required />
+      <form action="https://formspree.io/f/mdkwvlew" method="POST">
+  <!-- piilotetut apukentät -->
+  <input type="hidden" name="_subject" value="Uusi viesti (Kontakti | Vents Ravins)">
+  <!-- Valinnainen: kiitos-sivun osoite (vaihda omaan domainiin) -->
+  <input type="hidden" name="_next" value="https://OMA-DOMAIN.lv/kiitos.html">
+  <!-- roskapostin ansa -->
+  <input type="text" name="_gotcha" style="display:none">
 
-          <label for="email">E-pasts</label>
-          <input id="email" name="E-pasts" type="email" placeholder="jūs@example.com" required />
+  <label for="name">Vārds</label>
+  <input id="name" name="Vārds" type="text" placeholder="Jūsu vārds" required>
 
-          <label for="phone">Tālrunis</label>
-          <input id="phone" name="Tālrunis" type="tel" placeholder="+371 ..." />
+  <label for="email">E-pasts</label>
+  <input id="email" name="E-pasts" type="email" placeholder="jūs@example.com" required>
 
-          <label for="message">Ziņojums</label>
-          <textarea id="message" name="Ziņojums" rows="6" placeholder="Ko mēs varam palīdzēt?" required></textarea>
+  <label for="phone">Tālrunis</label>
+  <input id="phone" name="Tālrunis" type="tel" placeholder="+371 ..." >
 
-          <button type="submit">Sūtīt</button>
-          <p class="muted">Ieteikums: ja vēlaties pilno lomake-toiminnallisuuden, liitämme Formspree-URL:n action-kenttään.</p>
-        </form>
+  <label for="message">Ziņojums</label>
+  <textarea id="message" name="Ziņojums" rows="6" placeholder="Ko mēs varam palīdzēt?" required></textarea>
+
+  <!-- Valinnainen: näytetään sivulla, kenelle menee -->
+  <p class="muted">Kontaktpersona: Vents Ravins, tālr. <a href="tel:+37120174363">+371 20174363</a></p>
+
+  <button type="submit">Sūtīt</button>
+</form>
+
       </section>
     </div>
   </main>
