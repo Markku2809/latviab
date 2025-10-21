@@ -72,6 +72,24 @@ nav a[aria-current="page"], nav a:hover{
 }
 .btn-outline:hover{background:rgba(74,127,163,.08);}
 
+/* ====== Skārda apvalki -erikoisnappi ====== */
+.skarda-btn {
+  background:linear-gradient(135deg, #b0b8bd, #d9e1e4);
+  color:#1f2e35;
+  border:1px solid #9da7ac;
+  border-radius:14px;
+  font-weight:700;
+  padding:12px 18px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  transition:all .25s ease;
+}
+.skarda-btn:hover {
+  background:linear-gradient(135deg, #cfd6da, #f1f4f5);
+  color:#203038;
+  transform:translateY(-2px);
+  box-shadow:0 6px 14px rgba(0,0,0,0.12);
+}
+
 /* ====== Grid & Cards ====== */
 .grid-3{
   display:grid;gap:16px;
