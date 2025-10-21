@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Niemi Isolering – Ventilācija & Metāls</title>
   <meta name="description" content="Kvalitatīvas ventilācijas sistēmas un metāla izstrādājumi Latvijai – saprātīgas cenas un ātra piegāde." />
-  <link rel="icon" href="/assets/favicon.ico" />
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Header -->
@@ -14,10 +14,10 @@
     <div class="container topbar">
       <div class="brand">NIEMI ISOLERING</div>
       <nav aria-label="Galvenā izvēlne">
-        <a href="/index.html" aria-current="page">Sākums</a>
-        <a href="/produkti.html">Produkti</a>
-        <a href="/cenradis.html">Cenrādis</a>
-        <a href="/kontakti.html">Kontakti</a>
+        <a href="index.html" aria-current="page">Sākums</a>
+        <a href="produkti.html">Produkti</a>
+        <a href="cenradis.html">Cenrādis</a>
+        <a href="kontakti.html">Kontakti</a>
       </nav>
     </div>
 
@@ -25,34 +25,46 @@
     <section class="hero container">
       <h1>Ventilācijas sistēmas & metāla izstrādājumi</h1>
       <p class="lead">Precizitāte katrā griezumā – kvalitāte katrā detaļā. Draudzīgas cenas un ātra piegāde.</p>
-      <div class="cta-row">
-        <a class="btn skarda-btn" href="lvpdf/skarda-apvalki-cenradis-2025-2026.pdf" target="_blank" rel="noopener" download>
-  Skārda apvalki (PDF)
-</a>
 
-        <a class="btn" href="/latviski/pdf-viewer.html">Skatīt produktu PDF</a>
-        <a class="btn-outline" href="/latviski/pdf-viewer.html?file=/lvpdf/1.lv.pdf">Atvērt pirmo PDF</a>
+      <div class="cta-row">
+        <!-- UUSI NAPPI: Skārda apvalki (PDF) -->
+        <a id="skarda-btn" class="btn skarda-btn"
+           href="lvpdf/skarda-apvalki-cenradis-2025-2026.pdf"
+           target="_blank" rel="noopener"
+           aria-label="Skārda apvalki – atvērt cenrādi PDF formātā">
+          Skārda apvalki (PDF)
+        </a>
+
+        <!-- Tuotekuvasto (jos käytössä) -->
+        <a class="btn" href="latviski/pdf-viewer.html" target="_blank" rel="noopener">
+          Skatīt produktu PDF
+        </a>
+
+        <!-- Esimerkki toisen PDF:n avaamisesta -->
+        <a class="btn-outline" href="latviski/pdf-viewer.html?file=/lvpdf/1.lv.pdf" target="_blank" rel="noopener">
+          Atvērt pirmo PDF
+        </a>
       </div>
     </section>
   </header>
 
   <!-- Attēli -->
   <section class="container imgwrap">
-    <img loading="lazy" class="pretty" src="/assets/julkaisuun.png" alt="Taisnstūra kanāli – standarta un speciālie izmēri">
+    <img loading="lazy" class="pretty" src="assets/julkaisuun.png" alt="Taisnstūra kanāli – standarta un speciālie izmēri">
     <p class="imgcap">Standarta kanāli un speciālie izmēri pēc vienošanās</p>
   </section>
 
   <section class="container imgwrap">
-    <img loading="lazy" class="pretty" src="/assets/julkaisu.png" alt="Izolācijas apdare – precīza un estētiska izgatavošana">
+    <img loading="lazy" class="pretty" src="assets/julkaisu.png" alt="Izolācijas apdare – precīza un estētiska izgatavošana">
     <p class="imgcap">Izolācijas apdare ar pieredzi un precizitāti</p>
   </section>
 
   <!-- Ātrās saites -->
   <section class="container section">
     <div class="cta-row">
-      <a class="btn" href="/produkti.html">Produkti</a>
-      <a class="btn btn-outline" href="/cenradis.html">Cenrādis</a>
-      <a class="btn btn-outline" href="/kontakti.html">Kontakti</a>
+      <a class="btn" href="produkti.html">Produkti</a>
+      <a class="btn btn-outline" href="cenradis.html">Cenrādis</a>
+      <a class="btn btn-outline" href="kontakti.html">Kontakti</a>
     </div>
   </section>
 
@@ -97,5 +109,20 @@
       </div>
     </div>
   </footer>
+
+  <!-- Varalinkin automaattinen vaihto jos Pages-linkki ei ole vielä elossa -->
+  <script>
+  (async () => {
+    const a = document.getElementById('skarda-btn');
+    const pagesURL = a.getAttribute('href');
+    const rawURL = 'https://raw.githubusercontent.com/Markku2809/latviab/main/lvpdf/skarda-apvalki-cenradis-2025-2026.pdf';
+    try {
+      const r = await fetch(pagesURL, { method: 'HEAD' });
+      if (!r.ok) a.setAttribute('href', rawURL);
+    } catch (e) {
+      a.setAttribute('href', rawURL);
+    }
+  })();
+  </script>
 </body>
 </html>
